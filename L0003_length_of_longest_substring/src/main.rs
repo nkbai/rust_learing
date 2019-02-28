@@ -5,7 +5,7 @@ struct Solution {}
 impl Solution {
     pub fn length_of_longest_substring(s: String) -> i32 {
         let mut window = HashSet::new();
-        let mut (window_len, max_len) = (0, 0);
+        let (mut window_len, mut max_len) = (0, 0);
 
         let string_iter: Vec<char> = s.chars().collect();
 

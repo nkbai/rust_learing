@@ -49,6 +49,43 @@ impl Solution {
     }
 }
 
+/* 另外一个解决方法，耗时8ms左右，比这个快4ms
+impl Solution {
+    pub fn add_two_numbers(l1: Option<Box<ListNode>>, l2: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+        Solution::kernel(l1, l2, 0)
+    }
+
+    fn kernel(l1: Option<Box<ListNode>>, l2: Option<Box<ListNode>>, inc: i32) -> Option<Box<ListNode>> {
+        let mut ans = 0;
+        let mut next = None;
+        match (l1, l2) {
+            (Some(l1), Some(l2)) => {
+                ans = l1.val + l2.val + inc;
+                next = Solution::kernel(l1.next, l2.next, ans / 10);
+            }
+            (Some(l1), None) => {
+                ans = l1.val + inc;
+                next = Solution::kernel(l1.next, None, ans / 10);
+            }
+            (None, Some(l2)) => {
+                ans = l2.val + inc;
+                next = Solution::kernel(None, l2.next, ans / 10);
+            }
+            (None, None) => {
+                if inc != 0 {
+                    return Some(Box::new(ListNode::new(inc)))
+                } else {
+                    return None
+                }
+            }
+        }
+        let mut tmp = ListNode::new(ans % 10);
+        tmp.next = next;
+        Some(Box::new(tmp))
+    }
+}
+*/
+
 /*
 给出两个 非空 的链表用来表示两个非负的整数。其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储 一位 数字。
 

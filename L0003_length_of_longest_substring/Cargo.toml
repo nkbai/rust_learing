@@ -1,0 +1,7 @@
+[package]
+name = "L0003_length_of_longest_substring"
+version = "0.1.0"
+authors = ["liukai"]
+edition = "2018"
+
+[dependencies]
